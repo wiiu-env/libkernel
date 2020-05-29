@@ -2,3 +2,5 @@
 
 :TEXT
 KernelCopyData
+KernelWriteSRs
+KernelReadSRs

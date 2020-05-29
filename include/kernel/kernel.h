@@ -1,11 +1,16 @@
 #pragma once
 
+#include "kernel_defs.h"
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
 #include <cstdint>
+
+extern void KernelReadSRs(sr_table_t* table);
+extern void KernelWriteSRs(sr_table_t* table);
 extern void KernelCopyData(uint32_t dst, uint32_t src, uint32_t len);
 
 void KernelReadPTE(uint32_t outputAddr, int32_t length);
