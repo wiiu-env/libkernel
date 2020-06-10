@@ -6,3 +6,4 @@ lib/
 CMakeLists.txt
 .idea/
 cmake-build-debug/
+share/

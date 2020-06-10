@@ -99,10 +99,10 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 .PHONY: all dist-bin dist-src dist install clean
 
 #---------------------------------------------------------------------------------
-all: lib/libkernel.a
+all: lib/libkernel.a share/libkernel.ld
 
 dist-bin: all
-	@tar --exclude=*~ -cjf libkernel-$(VERSION).tar.bz2 include lib
+	@tar --exclude=*~ -cjf libkernel-$(VERSION).tar.bz2 include lib share
 
 dist-src:
 	@tar --exclude=*~ -cjf libkernel-src-$(VERSION).tar.bz2 include source Makefile
@@ -115,9 +115,15 @@ install: dist-bin
 
 lib:
 	@[ -d $@ ] || mkdir -p $@
+    
+share:
+	@[ -d $@ ] || mkdir -p $@
 
 release:
 	@[ -d $@ ] || mkdir -p $@
+    
+share/libkernel.ld :$(SOURCES) $(INCLUDES) | share release
+	mv $(CURDIR)/release/*.ld $(CURDIR)/$@
 
 lib/libkernel.a :$(SOURCES) $(INCLUDES) | lib release
 	@$(MAKE) BUILD=release OUTPUT=$(CURDIR)/$@ \
@@ -146,7 +152,7 @@ $(OFILES_SRC)	: $(HFILES)
 #---------------------------------------------------------------------------------
 %.o: %.def
 	$(SILENTMSG) $(notdir $<)
-	$(SILENTCMD)rplimportgen $< $*.s --forceSingleSection $(ERROR_FILTER)
+	$(SILENTCMD)rplimportgen $< $*.s $*.ld $(ERROR_FILTER)
 	$(SILENTCMD)$(CC) -x assembler-with-cpp $(ASFLAGS) -c $*.s -o $@ $(ERROR_FILTER)
     
 #---------------------------------------------------------------------------------
