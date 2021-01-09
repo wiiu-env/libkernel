@@ -7,7 +7,7 @@ extern "C"
 {
 #endif
 
-#include <cstdint>
+#include <stdint.h>
 
 extern void KernelReadSRs(sr_table_t* table);
 extern void KernelWriteSRs(sr_table_t* table);
