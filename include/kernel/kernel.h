@@ -9,8 +9,8 @@ extern "C"
 
 #include <stdint.h>
 
-extern void KernelReadSRs(sr_table_t* table);
-extern void KernelWriteSRs(sr_table_t* table);
+extern void KernelReadSRs(sr_table_t *table);
+extern void KernelWriteSRs(sr_table_t *table);
 extern void KernelCopyData(uint32_t dst, uint32_t src, uint32_t len);
 
 void KernelReadPTE(uint32_t outputAddr, int32_t length);
