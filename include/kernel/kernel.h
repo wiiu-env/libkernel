@@ -19,6 +19,8 @@ void KernelWritePTE(uint32_t inputAddr, int32_t length);
 
 void KernelNOPAtPhysicalAddress(uint32_t addr);
 
+void KernelPatchSyscall(uint32_t index, uint32_t addr);
+
 #ifdef __cplusplus
 } // extern "C"
 #endif
