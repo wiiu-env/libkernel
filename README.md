@@ -1,6 +1,6 @@
 # libkernel
-Requires the [KernelModule](https://github.com/Maschell/KernelModule) to be running via [SetupPayload](https://github.com/wiiu-env/SetupPayload).
-Requires [wut](https://github.com/decaf-emu/wut) for building.
+Requires the [KernelModule](https://github.com/wiiu-env/KernelModule) to be running via [WUMSLoader](https://github.com/wiiu-env/WUMSLoader).
+Requires [wut](https://github.com/devkitPro/wut) for building.
 Install via `make install`.
 
 ## Usage
