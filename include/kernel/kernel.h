@@ -3,8 +3,7 @@
 #include "kernel_defs.h"
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 #include <stdint.h>
